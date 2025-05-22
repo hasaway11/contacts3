@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './fragments/Header'
+import Nav from './fragments/Nav'
+import Aside from './fragments/Aside'
+import Footer from './fragments/Footer'
+import { Route, Routes } from 'react-router-dom';
+import ContactList from './view/ContactList';
+import ContactRead from './view/ContactRead';
+import ContactWrite from './view/ContactWrite';
+import ContactUpdate from './view/ContactUpdate';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Nav />
+      <main>
+        <Aside />
+        <section>
+          <Routes>
+            <Route path="/" element={<ContactList />} />
+            <Route path="/read" element={<ContactRead />} />
+            <Route path="/write" element={<ContactWrite />} />
+            <Route path="/update" element={<ContactUpdate />} />
+          </Routes>
+        </section>
+        <Aside />
+      </main>
+      <Footer />
     </div>
   );
 }
